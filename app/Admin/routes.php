@@ -13,4 +13,8 @@ Route::group([
 
     $router->get('/', 'HomeController@index')->name('home');
 
+    //teacher module routes
+    $router->resource('teacher', TTeacherController::class);
+    $router->resource('student', StStudentController::class);
+
 });
