@@ -103,4 +103,6 @@ return [
     'prev'                   => '上一步',
     'next'                   => '下一步',
     'quick_create'           => '快速创建',
+    'teacher_sn'             => '教师编号',
+    'teacher_name'           => '教师姓名',
 ];

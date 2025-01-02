@@ -57,11 +57,8 @@ return [
     |
     */
     'route' => [
-
         'prefix' => env('ADMIN_ROUTE_PREFIX', 'admin'),
-
         'namespace' => 'App\\Admin\\Controllers',
-
         'middleware' => ['web', 'admin'],
     ],
 
@@ -85,7 +82,7 @@ return [
     | Html title for all pages.
     |
     */
-    'title' => 'Admin',
+    'title' => '后台管理系统',
 
     /*
     |--------------------------------------------------------------------------
@@ -129,7 +126,7 @@ return [
         ],
 
         // Add "remember me" to login form
-        'remember' => true,
+        'remember' => false,
 
         // Redirect to the specified URI when user is not authorized.
         'redirect_to' => 'auth/login',
