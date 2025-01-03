@@ -9,7 +9,7 @@ class User extends Authenticatable
 {
     use Notifiable;
 
-    const ROLE_TEACHER = '教师'; //居然用了中文，可以使用tag
+    const ROLE_TEACHER = 'teacher'; //居然用了中文，可以使用tag
 
     /**
      * The attributes that are mass assignable.

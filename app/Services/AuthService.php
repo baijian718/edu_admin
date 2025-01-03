@@ -8,9 +8,9 @@ use Illuminate\Support\Facades\DB;
 
 class AuthService extends BaseService
 {
-    public static function getRoleByName($name)
+    public static function getRoleByTag($name)
     {
-        return DB::table(config('admin.database.roles_table'))->where('name', $name)->first();
+        return DB::table(config('admin.database.roles_table'))->where('slug', $name)->first();
     }
 
     public static function userIsTheRole($userId, $roleId)
@@ -40,7 +40,7 @@ class AuthService extends BaseService
 
     public static function getTeacherRole()
     {
-        return self::getRoleByName(User::ROLE_TEACHER);
+        return self::getRoleByTag(User::ROLE_TEACHER);
     }
 
     public static function createUserRole($userId,$roleId)
