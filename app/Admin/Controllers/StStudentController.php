@@ -69,7 +69,12 @@ class StStudentController extends AdminController
     {
         $form = new Form(new StStudent());
         $form->text('name', __('学生姓名'));
-        $form->text('st_sn', __('学生编号'));
+        if($form->isCreating()){
+            $form->text('st_sn', __('学生编号'));
+        }else{
+            $form->text('st_sn', __('学生编号'))->disable();;
+        }
+
         $form->saving(function (Form $form) {
             if ($form->isCreating()) {
                 $form->model()->password = Hash::make("Test@comiru.com");

@@ -80,7 +80,11 @@ class TTeacherController extends AdminController
     {
         $form = new Form(new TTeacher());
         $form->text('name', __('教师姓名'));
-        $form->text('t_sn', __('教师编号'));
+        if($form->isCreating()){
+            $form->text('t_sn', __('教师编号'));
+        }else{
+            $form->text('t_sn', __('教师编号'))->disable();;
+        }
         $form->saving(function (Form $form) {
             if ($form->isCreating()) {
                 $form->model()->password = Hash::make("Test@comiru.com");
