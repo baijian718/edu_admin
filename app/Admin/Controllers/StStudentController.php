@@ -68,13 +68,19 @@ class StStudentController extends AdminController
     protected function form()
     {
         $form = new Form(new StStudent());
-        $form->text('name', __('学生姓名'));
+        $form->text('name', __('学生姓名'))->rules('required|max:10', [
+            'required' => '请填写学生姓名',
+            'max'   => '不能大于10个字符',
+        ]);
         if($form->isCreating()){
-            $form->text('st_sn', __('学生编号'));
+            $form->text('st_sn', __('学生编号'))->rules('required|unique:st_student,st_sn|max:10',[
+                'required' => '请填写学生编号',
+                'unique'   => '学生编号已经占用',
+                'max'   => '不能大于10个字符',
+            ]);
         }else{
             $form->text('st_sn', __('学生编号'))->disable();;
         }
-
         $form->saving(function (Form $form) {
             if ($form->isCreating()) {
                 $form->model()->password = Hash::make("Test@comiru.com");

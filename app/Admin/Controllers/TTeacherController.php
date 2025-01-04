@@ -79,9 +79,16 @@ class TTeacherController extends AdminController
     protected function form()
     {
         $form = new Form(new TTeacher());
-        $form->text('name', __('教师姓名'));
+        $form->text('name', __('教师姓名'))->rules('required|max:10', [
+            'required' => '请填写教师姓名',
+            'max'   => '不能大于10个字符',
+        ]);
         if($form->isCreating()){
-            $form->text('t_sn', __('教师编号'));
+            $form->text('t_sn', __('教师编号'))->rules('required|unique:t_teacher,t_sn|max:10',[
+                'required' => '请填写教师编号',
+                'unique'   => '教师编号已经占用',
+                'max'      => '不能大于10个字符',
+            ]);
         }else{
             $form->text('t_sn', __('教师编号'))->disable();;
         }
